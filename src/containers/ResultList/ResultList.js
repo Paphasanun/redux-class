@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { DELETE_RESULT, STORE_RESULT } from "../../store/action";
 
 function ResultList(props) {
   return (
@@ -61,15 +62,15 @@ function ResultList(props) {
 
 const mapStateToProps = (state) => {
   return {
-    rlss55: state.resultList,
-    ctrss55: state.counter,
+    rlss55: state.resCombine.resultList,
+    ctrss55: state.ctrCombine.counter,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAdd: (value) => dispatch({ type: "STORE_RESULT", counter: value }),
-    onDelete: (id) => dispatch({ type: "DELETE_RESULT", id }),
+    onAdd: (value) => dispatch({ type: STORE_RESULT, counter: value }),
+    onDelete: (id) => dispatch({ type: DELETE_RESULT, id }),
   };
 };
 

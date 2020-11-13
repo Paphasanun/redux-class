@@ -1,4 +1,5 @@
 import { uniqueId } from "lodash";
+import { DELETE_RESULT, STORE_RESULT } from "../action";
 
 const initialState = {
   counter: 1,
@@ -7,27 +8,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "INCREMENT":
-      return {
-        ...state,
-        counter: state.counter + 1,
-      };
-    case "DECREMENT":
-      return {
-        ...state,
-        counter: state.counter - 1,
-      };
-    case "ADD":
-      return {
-        ...state,
-        counter: state.counter + action.value,
-      };
-    case "SUBTRACT":
-      return {
-        ...state,
-        counter: state.counter - action.value,
-      };
-    case "STORE_RESULT":
+    case STORE_RESULT:
       return {
         ...state,
         resultList: [
@@ -35,7 +16,7 @@ const reducer = (state = initialState, action) => {
           { id: uniqueId(), result: action.counter },
         ],
       };
-    case "DELETE_RESULT":
+    case DELETE_RESULT:
       return {
         ...state,
         resultList: state.resultList.filter(
