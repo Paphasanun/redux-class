@@ -1,6 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { DELETE_RESULT, STORE_RESULT } from "../../store/action";
+import {
+  deleteResult,
+  DELETE_RESULT,
+  storeResult,
+  STORE_RESULT,
+} from "../../store/action";
+import { Col, Row } from "antd";
 
 function ResultList(props) {
   return (
@@ -20,21 +26,26 @@ function ResultList(props) {
       >
         Store the value
       </button>
-      <ul
+      <Row
         style={{
-          width: "400px",
+          width: "680px",
           fontSize: "26px",
           listStyleType: "none",
-          margin: "0 auto",
+          margin: "10px auto 20px auto",
           color: "black",
           fontWeight: "bold",
           letterSpacing: "2px",
           textShadow: "2px 2px #6666",
-          display: "flex",
         }}
       >
         {props.rlss55.map(({ id, result }) => (
-          <li style={{ marginLeft: "20px" }}>
+          <Col
+            span={6}
+            style={{
+              border: "1px solid #6666",
+              padding: "4px"
+            }}
+          >
             {result}{" "}
             <button
               onClick={() => props.onDelete(id)}
@@ -48,14 +59,14 @@ function ResultList(props) {
                 cursor: "pointer",
                 outline: "none",
                 fontWeight: "bolder",
-                border: "2px black solid"
+                border: "2px black solid",
               }}
             >
               X
             </button>{" "}
-          </li>
+          </Col>
         ))}
-      </ul>
+      </Row>
     </div>
   );
 }
@@ -69,8 +80,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAdd: (value) => dispatch({ type: STORE_RESULT, counter: value }),
-    onDelete: (id) => dispatch({ type: DELETE_RESULT, id }),
+    onAdd: (value) => dispatch(storeResult(value)),
+    onDelete: (id) => dispatch(deleteResult(id)),
   };
 };
 

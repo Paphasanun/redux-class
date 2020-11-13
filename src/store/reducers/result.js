@@ -1,8 +1,7 @@
 import { uniqueId } from "lodash";
-import { DELETE_RESULT, STORE_RESULT } from "../action";
+import { ADD_SPECIAL_RESULT, DELETE_RESULT, STORE_RESULT } from "../action";
 
 const initialState = {
-  counter: 1,
   resultList: [],
 };
 
@@ -22,6 +21,11 @@ const reducer = (state = initialState, action) => {
         resultList: state.resultList.filter(
           (rs) => Number(rs.id) !== Number(action.id)
         ),
+      };
+    case ADD_SPECIAL_RESULT:
+      return {
+        ...state,
+        resultList: [...action.spcRL, ...state.resultList]
       };
     default:
       return state;

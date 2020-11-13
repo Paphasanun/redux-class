@@ -2,8 +2,7 @@ import React from "react";
 import "./CounterPanel.css";
 import { connect } from "react-redux";
 import { useState } from "react";
-import { INCREMENT, DECREMENT, ADD } from "../../store/action";
-import { SUBTRACT } from "../../store/action";
+import { add, increment, decrement, subtract } from "../../store/action";
 
 function CounterPanel(props) {
   const [value, setValue] = useState();
@@ -33,10 +32,10 @@ function CounterPanel(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onIncrementCounter: () => dispatch({ type: INCREMENT }),
-    onDecrementCounter: () => dispatch({ type: DECREMENT }),
-    onAddCounter: (value) => dispatch({ type: ADD, value }),
-    onSubtractCounter: (value) => dispatch({ type: SUBTRACT, value }),
+    onIncrementCounter: () => dispatch(increment()),
+    onDecrementCounter: () => dispatch(decrement()),
+    onAddCounter: (value) => dispatch(add(value)),
+    onSubtractCounter: (value) => dispatch(subtract(value)),
   };
 };
 
