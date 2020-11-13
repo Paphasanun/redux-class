@@ -1,15 +1,10 @@
 import CounterPanel from "../../components/CounterPanel/CounterPanel";
 import React from "react";
 import CounterDisplay from "../../components/CounterDisplay/CounterDisplay";
-import "./Counter.css";
 
 function Counter() {
   return (
     <div className="App">
-      <div >
-        <button className="styleButton">COUNTER</button>
-        <button className="styleButton">RESULT LIST</button>
-      </div>
       <img
         style={{ marginBottom: "20px", width: "290px", height: "auto" }}
         src={
